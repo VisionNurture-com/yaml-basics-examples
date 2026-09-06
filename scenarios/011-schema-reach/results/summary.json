@@ -1,0 +1,95 @@
+{
+  "scenario": "011-schema-reach",
+  "measuredAt": "2026-09-06T14:59:25.929Z",
+  "platform": "darwin arm64",
+  "toolVersions": "yamllint 1.38.0 / check-jsonschema 0.38.0",
+  "caughtCells": [
+    "字面を壊した×yamllint",
+    "構造を壊した×check-jsonschema"
+  ],
+  "missedCells": [
+    "字面を壊した×check-jsonschema",
+    "構造を壊した×yamllint"
+  ],
+  "positiveControlsHold": true,
+  "schemaRcValid": 0,
+  "schemaRcRequired": 1,
+  "schemaRcAdditionalProperties": 1,
+  "schemaRcType": 1,
+  "schemaRcEnum": 1,
+  "schemaRcFormat": 1,
+  "schemaRcFormatDisableAll": 0,
+  "schemaRcFormatDisableEmailOnly": 0,
+  "schemaRcFormatDisableBareFlag": 2,
+  "schemaExitCodes": {
+    "valid": 0,
+    "required": 1,
+    "additionalProperties": 1,
+    "type": 1,
+    "enum": 1,
+    "format": 1,
+    "formatDisableAll": 0,
+    "formatDisableEmailOnly": 0,
+    "formatDisableBareFlag": 2
+  },
+  "formatsCheckedByDefault": [
+    "email",
+    "date",
+    "ipv4",
+    "uuid"
+  ],
+  "formatsSilencedIndividually": [
+    "email",
+    "date",
+    "ipv4",
+    "uuid"
+  ],
+  "formatChecks": {
+    "email": {
+      "valid": 0,
+      "invalid": 1,
+      "disabled": 0
+    },
+    "date": {
+      "valid": 0,
+      "invalid": 1,
+      "disabled": 0
+    },
+    "ipv4": {
+      "valid": 0,
+      "invalid": 1,
+      "disabled": 0
+    },
+    "uuid": {
+      "valid": 0,
+      "invalid": 1,
+      "disabled": 0
+    }
+  },
+  "matrix": [
+    {
+      "label": "字面を壊した",
+      "tool": "yamllint",
+      "exitCode": 1,
+      "caught": true
+    },
+    {
+      "label": "字面を壊した",
+      "tool": "check-jsonschema",
+      "exitCode": 0,
+      "caught": false
+    },
+    {
+      "label": "構造を壊した",
+      "tool": "yamllint",
+      "exitCode": 0,
+      "caught": false
+    },
+    {
+      "label": "構造を壊した",
+      "tool": "check-jsonschema",
+      "exitCode": 1,
+      "caught": true
+    }
+  ]
+}

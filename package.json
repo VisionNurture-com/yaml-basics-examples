@@ -1,0 +1,22 @@
+{
+  "name": "yaml-basics-examples",
+  "version": "1.0.0",
+  "private": true,
+  "description": "YAML の検証・切り分け・依存の安全性を実機で確かめるシナリオ集",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check:structure": "node tools/check-structure.mjs",
+    "check:provenance": "node tools/check-provenance.mjs",
+    "check:neutrality": "node tools/check-neutrality.mjs",
+    "verify:004": "bash scenarios/004-lint-rules/run.sh",
+    "verify:011": "bash scenarios/011-schema-reach/run.sh"
+  },
+  "devDependencies": {
+    "dclint": "^3.1.0",
+    "js-yaml": "^5.4.1"
+  }
+}

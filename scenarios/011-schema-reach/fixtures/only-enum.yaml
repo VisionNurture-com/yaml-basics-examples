@@ -1,0 +1,5 @@
+---
+name: app
+replicas: 3
+environment: production
+admin_email: ops@example.com

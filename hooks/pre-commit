@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+# pre-commit — コミットの identity が、この作業コピーに設定した期待値と一致するかを見る。
+#
+# 背景:
+#   このリポジトリは 2 つの場所で運用する。片方は非公開、もう片方は公開である。
+#   公開側は使い捨てのクローンから push することがあり、リポジトリローカルの
+#   git config が無いまま既定値でコミットされやすい。公開側は誰でも読めるため、
+#   push した時点で author / committer のメールアドレスは取り消せない。
+#
+#   push の後に見る仕掛けだけでは間に合わない。commit の時点でここで止める。
+#
+# 🔴 期待値はこのファイルに書かない。
+#   本ファイルは公開側にも同じ内容で置くため、アドレスを直書きするとそれ自体が漏洩になる。
+#   期待値はリポジトリローカルの git config から読む。
+#
+# 有効化（クローン後 1 回）:
+#   git config core.hooksPath hooks
+#   git config hooks.expected-name  "<この層の名前>"
+#   git config hooks.expected-email "<この層のアドレス>"
+
+set -uo pipefail
+
+want_name="$(git config hooks.expected-name  || true)"
+want_mail="$(git config hooks.expected-email || true)"
+
+if [ -z "$want_name" ] || [ -z "$want_mail" ]; then
+  echo "❌ コミットを中止しました（期待 identity が設定されていません）" >&2
+  echo "   この作業コピーには hooks.expected-name / hooks.expected-email がありません。" >&2
+  echo "" >&2
+  echo "     git config hooks.expected-name  \"<この層の名前>\"" >&2
+  echo "     git config hooks.expected-email \"<この層のアドレス>\"" >&2
+  exit 1
+fi
+
+have_name="$(git config user.name  || true)"
+have_mail="$(git config user.email || true)"
+
+if [ "$have_name" = "$want_name" ] && [ "$have_mail" = "$want_mail" ]; then
+  exit 0
+fi
+
+echo "❌ コミットを中止しました（identity が期待と違います）" >&2
+echo "   いまの設定: ${have_name:-（未設定）} <${have_mail:-（未設定）}>" >&2
+echo "   期待:       $want_name <$want_mail>" >&2
+echo "" >&2
+echo "   是正:" >&2
+echo "     git config user.name  \"$want_name\"" >&2
+echo "     git config user.email \"$want_mail\"" >&2
+echo "" >&2
+echo "   🔴 公開側は誰でも読めます。push すると author / committer のメールアドレスは" >&2
+echo "      認証なしの API と commits タブから取得できます。" >&2
+exit 1

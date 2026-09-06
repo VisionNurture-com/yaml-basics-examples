@@ -1,0 +1,22 @@
+{
+  "scenario": "007-dependency-audit",
+  "measuredAt": "2026-09-05T08:55:58.184376+00:00",
+  "platform": "darwin",
+  "toolVersions": "PyYAML 6.0.3",
+  "pythonVersion": "3.14.7",
+  "pyyamlBelow54": "False",
+  "unsafeCallSites": [
+    "config_lib/reader.py:5 load",
+    "legacy_lib/parser.py:5 load",
+    "legacy_lib/parser.py:9 unsafe_load"
+  ],
+  "filesFlagged": [
+    "config_lib/reader.py",
+    "legacy_lib/parser.py"
+  ],
+  "filesClean": [
+    "safe_lib/loader.py"
+  ],
+  "replaySafeLoad": "ConstructorError で拒否",
+  "replayUnsafeLoad": "命令が走った"
+}

@@ -1,0 +1,12 @@
+---
+name: CI
+"on":
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-lates
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "${{ github.evet_name }}"
+      - run: echo "::set-output name=x::1"

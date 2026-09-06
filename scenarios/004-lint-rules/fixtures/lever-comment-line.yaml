@@ -1,0 +1,3 @@
+---
+a : 1  # yamllint disable-line rule:colons
+b : 2

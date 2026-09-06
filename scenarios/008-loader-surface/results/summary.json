@@ -1,0 +1,36 @@
+{
+  "scenario": "008-loader-surface",
+  "measuredAt": "2026-09-05T08:55:58.210064+00:00",
+  "platform": "darwin",
+  "toolVersions": "PyYAML 6.0.3",
+  "pythonVersion": "3.14.7",
+  "tagsProbed": [
+    "python/bytes",
+    "python/complex",
+    "python/module",
+    "python/name",
+    "python/object",
+    "python/object/apply",
+    "python/object/new",
+    "python/tuple"
+  ],
+  "safeLoadAccepts": [],
+  "fullLoadAccepts": [
+    "python/bytes",
+    "python/complex",
+    "python/name",
+    "python/tuple"
+  ],
+  "fullLoadRejects": [
+    "python/module",
+    "python/object",
+    "python/object/apply",
+    "python/object/new"
+  ],
+  "fullLoadRejectKinds": [
+    "ConstructorError"
+  ],
+  "fullLoadNameReturnsType": "builtin_function_or_method",
+  "loaderOmittedResult": "TypeError",
+  "unsafeLoadAcceptsObjectNew": "True"
+}

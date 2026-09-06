@@ -1,0 +1,5 @@
+---
+name: app
+replicas: 3
+environment: prod
+admin_email: not-an-email

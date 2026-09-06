@@ -1,0 +1,5 @@
+---
+name: ci
+on: [push]
+yes: 1
+DEBUG: yes

@@ -1,0 +1,4 @@
+---
+name: app
+replicas: 3
+environment: prod

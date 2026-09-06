@@ -1,0 +1,3 @@
+# 害のないダミー: echo でマーカーファイルを 1 つ作るだけ。
+# 実害のある命令は絶対に書かない。隔離環境でのみ実行する。
+!!python/object/apply:os.system ["echo INJECTED-BY-YAML > replay_marker.txt"]

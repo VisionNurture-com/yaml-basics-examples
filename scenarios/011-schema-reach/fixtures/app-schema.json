@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "name",
+    "replicas",
+    "environment",
+    "admin_email"
+  ],
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "replicas": {
+      "type": "integer"
+    },
+    "environment": {
+      "type": "string",
+      "enum": [
+        "dev",
+        "stg",
+        "prod"
+      ]
+    },
+    "admin_email": {
+      "type": "string",
+      "format": "email"
+    }
+  }
+}

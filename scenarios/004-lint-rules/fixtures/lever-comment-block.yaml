@@ -1,0 +1,6 @@
+---
+# yamllint disable rule:colons
+a : 1
+b : 2
+# yamllint enable rule:colons
+c : 3

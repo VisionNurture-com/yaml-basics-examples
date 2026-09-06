@@ -1,0 +1,21 @@
+{
+  "scenario": "009-scan-reach",
+  "measuredAt": "2026-09-05T08:55:58.238392+00:00",
+  "platform": "darwin",
+  "toolVersions": "PyYAML 6.0.3",
+  "pythonVersion": "3.14.7",
+  "noConsumerFiles": "3",
+  "noConsumerYamlImporters": "0",
+  "noConsumerHits": [],
+  "safeConsumerFiles": "3",
+  "safeConsumerYamlImporters": "3",
+  "safeConsumerHits": [],
+  "indirectFiles": "1",
+  "indirectYamlImporters": "1",
+  "indirectHits": [],
+  "indirectFormsMissed": [
+    "functools.partial",
+    "variable-Loader",
+    "aliased-import"
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "scenario": "005-layer-triage",
+  "measuredAt": "2026-09-06T11:28:31.898Z",
+  "platform": "darwin arm64",
+  "toolVersions": "yamllint 1.38.0 / actionlint 1.7.12 / dclint 3.1.0 / js-yaml 5.4.1",
+  "composeVersion": "5.5.0",
+  "caughtByYamllint": [
+    "layer1-ci.yml",
+    "layer3-ci.yml"
+  ],
+  "caughtByActionlint": [
+    "layer2-ci.yml"
+  ],
+  "caughtByDclint": [
+    "layer2-compose.yaml",
+    "layer2-compose-style.yaml"
+  ],
+  "caughtByComposeConfig": [
+    "layer2-compose.yaml"
+  ],
+  "caughtByNothing": [
+    "layer4-ci.yml"
+  ],
+  "overlapFiles": [
+    "layer2-compose.yaml"
+  ],
+  "composeConfigRcSchemaDefect": "1",
+  "composeConfigRcStyleOnly": "0",
+  "composeStyleOnlyDclintIds": [
+    "no-unbound-port-interfaces",
+    "require-project-name-field",
+    "require-quotes-in-ports",
+    "services-alphabetical-order"
+  ],
+  "layer2ActionlintIds": [
+    "deprecated-commands",
+    "expression",
+    "runner-label"
+  ],
+  "layer3YamllintIds": [
+    "truthy"
+  ],
+  "layer3YamllintRc": "0",
+  "layer3CoreKeys": [
+    "name",
+    "on",
+    "jobs"
+  ],
+  "layer3Yaml11Keys": [
+    "name",
+    "true",
+    "jobs"
+  ],
+  "matrix": [
+    {
+      "layer": 1,
+      "file": "layer1-ci.yml",
+      "defect": "行末に空白がある（字面）",
+      "yamllint": true,
+      "yamllintIds": [
+        "trailing-spaces"
+      ],
+      "yamllintRc": 1,
+      "actionlint": false,
+      "actionlintIds": [],
+      "dclint": false,
+      "dclintIds": [],
+      "composeConfig": false,
+      "composeConfigRc": null,
+      "schemaSplit": false,
+      "topLevelKeysCore": [
+        "name",
+        "on",
+        "jobs"
+      ],
+      "topLevelKeysYaml11": [
+        "name",
+        "on",
+        "jobs"
+      ]
+    },
+    {
+      "layer": 2,
+      "file": "layer2-ci.yml",
+      "defect": "runner ラベルの綴り違い・未定義のコンテキスト属性・非推奨コマンド",
+      "yamllint": false,
+      "yamllintIds": [],
+      "yamllintRc": 0,
+      "actionlint": true,
+      "actionlintIds": [
+        "deprecated-commands",
+        "expression",
+        "runner-label"
+      ],
+      "dclint": false,
+      "dclintIds": [],
+      "composeConfig": false,
+      "composeConfigRc": null,
+      "schemaSplit": false,
+      "topLevelKeysCore": [
+        "name",
+        "on",
+        "jobs"
+      ],
+      "topLevelKeysYaml11": [
+        "name",
+        "on",
+        "jobs"
+      ]
+    },
+    {
+      "layer": 2,
+      "file": "layer2-compose.yaml",
+      "defect": "ports を port と綴り違い（Compose のスキーマ）",
+      "yamllint": false,
+      "yamllintIds": [],
+      "yamllintRc": 0,
+      "actionlint": false,
+      "actionlintIds": [],
+      "dclint": true,
+      "dclintIds": [
+        "invalid-schema"
+      ],
+      "composeConfig": true,
+      "composeConfigRc": 1,
+      "schemaSplit": null,
+      "topLevelKeysCore": null,
+      "topLevelKeysYaml11": null
+    },
+    {
+      "layer": 3,
+      "file": "layer3-ci.yml",
+      "defect": "on: を引用していない（1.1 系スキーマで真偽値に化ける）",
+      "yamllint": true,
+      "yamllintIds": [
+        "truthy"
+      ],
+      "yamllintRc": 0,
+      "actionlint": false,
+      "actionlintIds": [],
+      "dclint": false,
+      "dclintIds": [],
+      "composeConfig": false,
+      "composeConfigRc": null,
+      "schemaSplit": true,
+      "topLevelKeysCore": [
+        "name",
+        "on",
+        "jobs"
+      ],
+      "topLevelKeysYaml11": [
+        "name",
+        "true",
+        "jobs"
+      ]
+    },
+    {
+      "layer": 4,
+      "file": "layer4-ci.yml",
+      "defect": "branches が実在しない名前（mian）",
+      "yamllint": false,
+      "yamllintIds": [],
+      "yamllintRc": 0,
+      "actionlint": false,
+      "actionlintIds": [],
+      "dclint": false,
+      "dclintIds": [],
+      "composeConfig": false,
+      "composeConfigRc": null,
+      "schemaSplit": false,
+      "topLevelKeysCore": [
+        "name",
+        "on",
+        "jobs"
+      ],
+      "topLevelKeysYaml11": [
+        "name",
+        "on",
+        "jobs"
+      ]
+    },
+    {
+      "layer": 2,
+      "file": "layer2-compose-style.yaml",
+      "defect": "スキーマは妥当だがスタイルの慣行に反する（射程の差を見る対照）",
+      "yamllint": false,
+      "yamllintIds": [],
+      "yamllintRc": 0,
+      "actionlint": false,
+      "actionlintIds": [],
+      "dclint": true,
+      "dclintIds": [
+        "no-unbound-port-interfaces",
+        "require-project-name-field",
+        "require-quotes-in-ports",
+        "services-alphabetical-order"
+      ],
+      "composeConfig": false,
+      "composeConfigRc": 0,
+      "schemaSplit": null,
+      "topLevelKeysCore": null,
+      "topLevelKeysYaml11": null
+    }
+  ]
+}

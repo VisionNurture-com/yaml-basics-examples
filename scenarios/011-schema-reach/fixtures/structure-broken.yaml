@@ -1,0 +1,6 @@
+---
+name: app
+replicas: "3"
+environment: production
+relicas: 3
+admin_email: not-an-email

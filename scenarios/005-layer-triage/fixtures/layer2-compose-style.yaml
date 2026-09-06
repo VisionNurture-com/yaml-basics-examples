@@ -1,0 +1,10 @@
+---
+services:
+  web:
+    image: nginx:1.27
+    ports:
+      - 8080:80
+    restart: always
+  db:
+    image: postgres:17
+    restart: always

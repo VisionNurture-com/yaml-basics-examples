@@ -1,0 +1,117 @@
+name: verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  # M0 — 追加の道具が要らない。clean clone で必ず動く
+  structure:
+    name: structure (M0)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+      - run: npm ci
+      - run: npm run check:structure
+      - run: npm run check:neutrality
+
+  # M1 — 道具を入れて測り直し、expected.md と突き合わせる。
+  #
+  # 🔴 版を固定する。expected.md は toolVersions を突合対象に入れているため、
+  #    版が動くとここで落ちる。それが正しい挙動で、落ちたら測り直す。
+  scenarios:
+    name: scenarios (M1)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: [structure]
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+      # 010-jvm-limits が JDK を要る（SnakeYAML の既定を測る）
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "25"
+
+      - run: npm ci
+
+      # 🔴 版を固定する。expected.md が toolVersions を突合対象に入れているため、
+      #    版が動くとここで落ちる。それが正しい挙動で、落ちたら測り直す。
+      - name: 道具を入れる
+        run: |
+          set -euo pipefail
+          pip install yamllint==1.38.0 PyYAML==6.0.3 check-jsonschema==0.38.0
+          bash <(curl -fsSL https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash) 1.7.12
+          sudo mv ./actionlint /usr/local/bin/actionlint
+
+      - name: 版を記録する
+        run: |
+          yamllint --version
+          check-jsonschema --version
+          actionlint -version | head -1
+          node -e "console.log('dclint', require('./node_modules/dclint/package.json').version)"
+          node -e "console.log('js-yaml', require('./node_modules/js-yaml/package.json').version)"
+          python3 -c "import yaml,sys; print('PyYAML', yaml.__version__, '/ Python', sys.version.split()[0])"
+          java -version
+
+      - name: M1 シナリオを実行する
+        run: |
+          set -euo pipefail
+          found=0
+          for d in scenarios/*/; do
+            grep -qE '^#[[:space:]]*mode:[[:space:]]*M1' "$d/run.sh" || continue
+            echo "::group::$(basename "$d")"
+            bash "$d/run.sh"
+            echo "::endgroup::"
+            found=$((found + 1))
+          done
+          if [ "$found" -eq 0 ]; then
+            echo "::error::M1 シナリオが 1 本もありません"
+            exit 1
+          fi
+          echo "M1 シナリオ $found 本を実行しました"
+
+      - name: 測り直した値を突き合わせる
+        run: npm run check:provenance
+
+      - name: 生ログを残す
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: results
+          path: scenarios/*/results/
+          if-no-files-found: error
+
+  # 公開側でのみ走る。コミットの author / committer が公開用 identity かを見る。
+  identity:
+    name: commit identity
+    if: github.repository_owner == 'VisionNurture-com'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: 公開用 identity 以外のコミットが無いことを確かめる
+        run: |
+          set -euo pipefail
+          expected='TechBizPlusD <blog@techbizplusd.com>'
+          bad="$(git log --format='%H%x09%an <%ae>%x09%cn <%ce>' \
+                 | awk -F'\t' -v e="$expected" '$2 != e || $3 != e')"
+          if [ -n "$bad" ]; then
+            echo "::error::公開用 identity 以外のコミットがあります（期待: $expected）"
+            echo "$bad"
+            exit 1
+          fi
+          echo "全コミットが $expected です"

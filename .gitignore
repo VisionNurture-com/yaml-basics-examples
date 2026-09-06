@@ -1,0 +1,7 @@
+node_modules/
+*.tmp
+.DS_Store
+.venv/
+__pycache__/
+scenarios/007-dependency-audit/replay/replay_marker.txt
+scenarios/010-jvm-limits/vendor/

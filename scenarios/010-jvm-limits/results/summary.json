@@ -1,0 +1,16 @@
+{
+  "scenario": "010-jvm-limits",
+  "measuredAt": "2026-09-05T08:53:18.853193Z",
+  "platform": "Mac OS X",
+  "toolVersions": "SnakeYAML 2.7",
+  "jdkVersion": "25.0.4",
+  "jarSha1": "47713fda569f07641538ff7f2fa9cb3ead4603e5",
+  "bundleVersion": "2.7.0",
+  "implementationVersionFromApi": "null",
+  "defaultMaxAliasesForCollections": "50",
+  "defaultCodePointLimit": "3145728",
+  "aliases60Default": "YAMLException",
+  "aliases60Max100": "LinkedHashMap",
+  "aliases60Max10": "YAMLException",
+  "globalTagDefault": "ComposerException"
+}
