@@ -106,7 +106,7 @@ for (const r of RULES) {
 
   // C 条件（M1）: そのルールだけを既定から落とし、fixture 全体で何が残るかを見る。
   // 🔴 「そのルールの検出が消えるか」では足りない。別のルールが同じ違反を拾うなら
-  //    決定表の「落としたら通る」は嘘になる（VALUE-01 G3 欠陥 2）。
+  //    決定表の「落としたら通る」は嘘になる。
   const dropped = lintAll(`{extends: default, rules: {${r.name}: disable}}`, file);
   const droppedOther = [...new Set(dropped.map((h) => h.rule))].sort();
 
@@ -142,7 +142,7 @@ const leverIgnore = {
 };
 
 // M3: コメント制御は「.yamllint 側」ではなく「YAML ファイル側」に書く機構
-//     （VALUE-01 G3 欠陥 4 の是正）。3 種を個別に測る。
+//     3 種を個別に測る。
 const cmtBlock = resolve(fixtures, 'lever-comment-block.yaml');
 writeFileSync(cmtBlock, '---\n# yamllint disable rule:colons\na : 1\nb : 2\n# yamllint enable rule:colons\nc : 3\n');
 const cmtLine = resolve(fixtures, 'lever-comment-line.yaml');

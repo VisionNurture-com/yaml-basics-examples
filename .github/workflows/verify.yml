@@ -10,7 +10,7 @@ jobs:
   # M0 — 追加の道具が要らない。clean clone で必ず動く
   structure:
     name: structure (M0)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
@@ -27,7 +27,7 @@ jobs:
   #    版が動くとここで落ちる。それが正しい挙動で、落ちたら測り直す。
   scenarios:
     name: scenarios (M1)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     needs: [structure]
     steps:
@@ -38,6 +38,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: "3.14"
+      # 012-loader-versions / 013-tool-reach が uv を要る（版ごと・道具ごとに使い捨ての venv を作る）
+      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0（v8 以降はメジャーの移動タグが無いため SHA で固定する）
       # 010-jvm-limits が JDK を要る（SnakeYAML の既定を測る）
       - uses: actions/setup-java@v5
         with:
@@ -63,6 +65,7 @@ jobs:
           node -e "console.log('dclint', require('./node_modules/dclint/package.json').version)"
           node -e "console.log('js-yaml', require('./node_modules/js-yaml/package.json').version)"
           python3 -c "import yaml,sys; print('PyYAML', yaml.__version__, '/ Python', sys.version.split()[0])"
+          uv --version
           java -version
 
       - name: M1 シナリオを実行する
@@ -97,7 +100,7 @@ jobs:
   identity:
     name: commit identity
     if: github.repository_owner == 'VisionNurture-com'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7

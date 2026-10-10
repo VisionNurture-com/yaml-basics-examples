@@ -1,0 +1,13 @@
+{
+  "scenario": "014-safeloader-extend",
+  "measuredAt": "2026-10-07T14:05:59.173263+00:00",
+  "platform": "darwin",
+  "toolVersions": "PyYAML 6.0.3",
+  "pythonVersion": "3.14.7",
+  "inherit.safeLoadBefore": "ConstructorError",
+  "inherit.extendedLoader": "int",
+  "inherit.safeLoadAfter": "ConstructorError",
+  "direct.safeLoadBefore": "ConstructorError",
+  "direct.extendedLoader": "int",
+  "direct.safeLoadAfter": "int"
+}

@@ -8,6 +8,6 @@ set -euo pipefail
 cd "$(dirname "$0")/../.."
 command -v yamllint >/dev/null || { echo "yamllint がありません: pip install yamllint" >&2; exit 2; }
 # 🔴 測り直す前に前回の出力を消す。測定が途中で失敗しても前回の summary.json が
-#    残っていれば、直後の突合ゲートは前回の値で緑を返す（MEASURE-01 手順 4）。
+#    残っていれば、直後の突合ゲートは前回の値で緑を返す。
 rm -f scenarios/004-lint-rules/results/summary.json
 node scenarios/004-lint-rules/measure.mjs

@@ -36,6 +36,9 @@ npm run check:provenance
 | [`009-scan-reach`](scenarios/009-scan-reach/) | **走査の「0 件」が持つ 2 つの意味**（対象が居ない / 実際に安全）と、**静的走査が届かない 3 つの書き方** | PyYAML 6.0.3 | M1 |
 | [`010-jvm-limits`](scenarios/010-jvm-limits/) | **SnakeYAML の「量の制限」の既定**（コレクションの alias 数 50 / code point 数 3 MiB）。PyYAML と js-yaml には対応する既定が無い | JDK 17 以上 / curl | M1 |
 | [`011-schema-reach`](scenarios/011-schema-reach/) | **字面（lint）と構造（JSON Schema）の射程を同じ 2 題材で測り分ける**。陽性対照つきの 2 × 2 で重なりが 0 件であること、`format` 4 形式が既定で検証されること、**`--disable-formats` は値を取るオプションであること** | yamllint 1.38.0 / check-jsonschema 0.38.0 | M1 |
+| [`012-loader-versions`](scenarios/012-loader-versions/) | **PyYAML の版の区切り（5.1 / 5.4 / 6.0）で、同じ書き方の応答がどう変わるか**。`Loader` を省いた `load()` は 5.3.1 で組み立て・5.4.1 で拒み・6.0.3 で `TypeError`。依存の中のこの書き方は 6.0.3 では**呼んだ時点で**止まる | uv（PyYAML 5.3.1 / 5.4.1 / 6.0.3 を Python 3.9 の一時 venv に入れる） | M1 |
+| [`013-tool-reach`](scenarios/013-tool-reach/) | **依存の奥を探す道具 5 つ（`grep` / `scan_deps.py` / Bandit B506 / Ruff S506 / Semgrep）が、同じ題材のどの書き方を拾い、どれを拾わないか**。判定に埋め込まれた PyYAML の版の前提が道具ごとに逆向き | uv / curl（Bandit 1.9.4 / Ruff 0.16.10 / Semgrep 1.179.0） | M1 |
+| [`014-safeloader-extend`](scenarios/014-safeloader-extend/) | **独自タグを足すとき、`SafeLoader` を継承するか直接足すかで、素の `yaml.safe_load` まで変わるか** | PyYAML 6.0.3 | M1 |
 
 ## mode の意味
 

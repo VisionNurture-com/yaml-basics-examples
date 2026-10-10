@@ -8,6 +8,6 @@ set -euo pipefail
 cd "$(dirname "$0")/../.."
 command -v yamllint >/dev/null || { echo "yamllint がありません: pip install yamllint" >&2; exit 2; }
 command -v check-jsonschema >/dev/null || { echo "check-jsonschema がありません: pip install check-jsonschema" >&2; exit 2; }
-# 🔴 測り直す前に前回の出力を消す（MEASURE-01 手順 4）。
+# 🔴 測り直す前に前回の出力を消す。残っていると、測定が途中で失敗しても突合が前回の値で通る。
 rm -f scenarios/011-schema-reach/results/summary.json
 node scenarios/011-schema-reach/measure.mjs

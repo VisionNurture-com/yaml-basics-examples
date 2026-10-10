@@ -1,6 +1,6 @@
 {
   "scenario": "007-dependency-audit",
-  "measuredAt": "2026-09-05T08:55:58.184376+00:00",
+  "measuredAt": "2026-10-07T14:06:15.340197+00:00",
   "platform": "darwin",
   "toolVersions": "PyYAML 6.0.3",
   "pythonVersion": "3.14.7",

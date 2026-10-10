@@ -1,6 +1,6 @@
 {
   "scenario": "010-jvm-limits",
-  "measuredAt": "2026-09-05T08:53:18.853193Z",
+  "measuredAt": "2026-10-07T14:06:15.094499Z",
   "platform": "Mac OS X",
   "toolVersions": "SnakeYAML 2.7",
   "jdkVersion": "25.0.4",

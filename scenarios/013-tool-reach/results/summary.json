@@ -1,0 +1,51 @@
+{
+  "scenario": "013-tool-reach",
+  "measuredAt": "2026-10-08T00:09:02.287443+00:00",
+  "platform": "darwin",
+  "toolVersions": "bandit 1.9.4 / ruff 0.16.10 / semgrep 1.179.0",
+  "sampleDeps.grep": [
+    "config_lib/reader.py:5",
+    "legacy_lib/parser.py:4",
+    "legacy_lib/parser.py:5"
+  ],
+  "sampleDeps.scanDeps": [
+    "config_lib/reader.py:5",
+    "legacy_lib/parser.py:5",
+    "legacy_lib/parser.py:9"
+  ],
+  "sampleDeps.bandit": [
+    "config_lib/reader.py:5",
+    "legacy_lib/parser.py:5"
+  ],
+  "sampleDeps.ruff": [
+    "config_lib/reader.py:5",
+    "legacy_lib/parser.py:5"
+  ],
+  "sampleDeps.semgrep": [
+    "legacy_lib/parser.py:9"
+  ],
+  "indirect.grep": [
+    "indirect.py:11",
+    "indirect.py:18"
+  ],
+  "indirect.scanDeps": [],
+  "indirect.bandit": [
+    "indirect.py:18"
+  ],
+  "indirect.ruff": [
+    "indirect.py:18"
+  ],
+  "indirect.semgrep": [
+    "indirect.py:26"
+  ],
+  "grepFp.grep": [
+    "ruamel_var.py:7",
+    "safe_loader.py:6"
+  ],
+  "grepFp.scanDeps": [
+    "ruamel_var.py:7"
+  ],
+  "grepFp.bandit": [],
+  "grepFp.ruff": [],
+  "grepFp.semgrep": []
+}

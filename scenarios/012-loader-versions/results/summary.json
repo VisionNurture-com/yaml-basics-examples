@@ -1,0 +1,78 @@
+{
+  "scenario": "012-loader-versions",
+  "measuredAt": "2026-10-07T14:06:11.457795+00:00",
+  "platform": "darwin",
+  "toolVersions": "PyYAML 5.3.1 / 5.4.1 / 6.0.3",
+  "pythonVersion": [
+    "3.9.6"
+  ],
+  "v5_3_1.loadWithoutLoader.name": "builtin_function_or_method",
+  "v5_3_1.loadWithoutLoader.name.warnings": [
+    "YAMLLoadWarning"
+  ],
+  "v5_3_1.loadWithoutLoader.objectNew": "list",
+  "v5_3_1.loadWithoutLoader.objectNew.warnings": [
+    "YAMLLoadWarning"
+  ],
+  "v5_3_1.safeLoad.name": "ConstructorError",
+  "v5_3_1.safeLoad.name.warnings": [],
+  "v5_3_1.safeLoad.objectNew": "ConstructorError",
+  "v5_3_1.safeLoad.objectNew.warnings": [],
+  "v5_3_1.fullLoad.name": "builtin_function_or_method",
+  "v5_3_1.fullLoad.name.warnings": [],
+  "v5_3_1.fullLoad.objectNew": "list",
+  "v5_3_1.fullLoad.objectNew.warnings": [],
+  "v5_3_1.unsafeLoad.name": "builtin_function_or_method",
+  "v5_3_1.unsafeLoad.name.warnings": [],
+  "v5_3_1.unsafeLoad.objectNew": "list",
+  "v5_3_1.unsafeLoad.objectNew.warnings": [],
+  "v5_3_1.dependency.import": "ok",
+  "v5_3_1.dependency.call": "dict",
+  "v5_3_1.dependency.call.warnings": [
+    "YAMLLoadWarning"
+  ],
+  "v5_4_1.loadWithoutLoader.name": "builtin_function_or_method",
+  "v5_4_1.loadWithoutLoader.name.warnings": [
+    "YAMLLoadWarning"
+  ],
+  "v5_4_1.loadWithoutLoader.objectNew": "ConstructorError",
+  "v5_4_1.loadWithoutLoader.objectNew.warnings": [
+    "YAMLLoadWarning"
+  ],
+  "v5_4_1.safeLoad.name": "ConstructorError",
+  "v5_4_1.safeLoad.name.warnings": [],
+  "v5_4_1.safeLoad.objectNew": "ConstructorError",
+  "v5_4_1.safeLoad.objectNew.warnings": [],
+  "v5_4_1.fullLoad.name": "builtin_function_or_method",
+  "v5_4_1.fullLoad.name.warnings": [],
+  "v5_4_1.fullLoad.objectNew": "ConstructorError",
+  "v5_4_1.fullLoad.objectNew.warnings": [],
+  "v5_4_1.unsafeLoad.name": "builtin_function_or_method",
+  "v5_4_1.unsafeLoad.name.warnings": [],
+  "v5_4_1.unsafeLoad.objectNew": "list",
+  "v5_4_1.unsafeLoad.objectNew.warnings": [],
+  "v5_4_1.dependency.import": "ok",
+  "v5_4_1.dependency.call": "dict",
+  "v5_4_1.dependency.call.warnings": [
+    "YAMLLoadWarning"
+  ],
+  "v6_0_3.loadWithoutLoader.name": "TypeError",
+  "v6_0_3.loadWithoutLoader.name.warnings": [],
+  "v6_0_3.loadWithoutLoader.objectNew": "TypeError",
+  "v6_0_3.loadWithoutLoader.objectNew.warnings": [],
+  "v6_0_3.safeLoad.name": "ConstructorError",
+  "v6_0_3.safeLoad.name.warnings": [],
+  "v6_0_3.safeLoad.objectNew": "ConstructorError",
+  "v6_0_3.safeLoad.objectNew.warnings": [],
+  "v6_0_3.fullLoad.name": "builtin_function_or_method",
+  "v6_0_3.fullLoad.name.warnings": [],
+  "v6_0_3.fullLoad.objectNew": "ConstructorError",
+  "v6_0_3.fullLoad.objectNew.warnings": [],
+  "v6_0_3.unsafeLoad.name": "builtin_function_or_method",
+  "v6_0_3.unsafeLoad.name.warnings": [],
+  "v6_0_3.unsafeLoad.objectNew": "list",
+  "v6_0_3.unsafeLoad.objectNew.warnings": [],
+  "v6_0_3.dependency.import": "ok",
+  "v6_0_3.dependency.call": "TypeError",
+  "v6_0_3.dependency.call.warnings": []
+}
